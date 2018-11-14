@@ -20,13 +20,12 @@ var originalNote = {
 WRITE
 */
 var originalNoteString = JSON.stringify(originalNote);
-fs.writeFileSync('notes.json', originalNoteString);
+fs.writeFileSync('../notes.json', originalNoteString);
 /*
 READ
 */
-var noteString = fs.readFileSync('notes.json');
+var noteString = fs.readFileSync('../notes.json');
 var note = JSON.parse(noteString);
-console.log(originalNote.title);
 console.log(typeof note);
 console.log(note.title);
 
