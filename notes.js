@@ -1,5 +1,3 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 var fetchNotes = () => {
@@ -22,7 +20,6 @@ var addNote = (title, body) => {
         body
     };    
     var duplicateNotes = notes.filter((tempNote) => tempNote.title === title);
-        //notes.filter(note) is the same as doing a for(var in array) loop
 
     if (duplicateNotes.length === 0) { 
         notes.push(note);
@@ -32,13 +29,14 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-    console.log('Getting all notes');
+    return fetchNotes();
 };
 
 var getNote = (title) => {
     var notes = fetchNotes();
     var specificNote = notes.filter((tempNote) => tempNote.title === title);
-    if(specificNote.length ===1)return specificNote[0];
+    
+    return specificNote[0];
 };
 
 var removeNote = (title) => {
@@ -48,9 +46,16 @@ var removeNote = (title) => {
 
     return notes.length !== filteredNotes.length;
 };
+
+var logNote = (note) => {
+    console.log("----");
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+};
 module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
